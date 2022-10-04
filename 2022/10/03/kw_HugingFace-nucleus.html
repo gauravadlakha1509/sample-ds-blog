@@ -1,0 +1,2360 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Title | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Title" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<link rel="canonical" href="https://gauravadlakha1509.github.io/sample-ds-blog/2022/10/03/kw_HugingFace-nucleus.html" />
+<meta property="og:url" content="https://gauravadlakha1509.github.io/sample-ds-blog/2022/10/03/kw_HugingFace-nucleus.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-10-03T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Title" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-10-03T00:00:00-05:00","datePublished":"2022-10-03T00:00:00-05:00","description":"An easy to use blogging platform with support for Jupyter Notebooks.","headline":"Title","mainEntityOfPage":{"@type":"WebPage","@id":"https://gauravadlakha1509.github.io/sample-ds-blog/2022/10/03/kw_HugingFace-nucleus.html"},"url":"https://gauravadlakha1509.github.io/sample-ds-blog/2022/10/03/kw_HugingFace-nucleus.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/sample-ds-blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://gauravadlakha1509.github.io/sample-ds-blog/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/sample-ds-blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/sample-ds-blog/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/sample-ds-blog/about/">About Me</a><a class="page-link" href="/sample-ds-blog/search/">Search</a><a class="page-link" href="/sample-ds-blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Title</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-10-03T00:00:00-05:00" itemprop="datePublished">
+        Oct 3, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      6 min read
+    
+</span></p>
+
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-justify-center">
+          <div class="px-2">
+
+    <a href="https://github.com/gauravadlakha1509/sample-ds-blog/tree/master/_notebooks/kw_HugingFace-nucleus.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/sample-ds-blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          
+          
+          
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/kw_HugingFace-nucleus.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># !pip install transformers[sentencepiece]</span>
+<span class="c1"># !pip install nb_black</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> nb_black
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="08d3dcb3-d447-4ec9-aa24-3676e1159ddd"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#08d3dcb3-d447-4ec9-aa24-3676e1159ddd');
+
+            setTimeout(function() {
+                var nbb_cell_id = 2;
+                var nbb_unformatted_code = "%load_ext nb_black";
+                var nbb_formatted_code = "%load_ext nb_black";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/home/ec2-user/SageMaker/&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span> <span class="o">/</span> <span class="s2">&quot;df_raw.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="395fe25d-5439-459b-8820-df1db616a6db"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#395fe25d-5439-459b-8820-df1db616a6db');
+
+            setTimeout(function() {
+                var nbb_cell_id = 3;
+                var nbb_unformatted_code = "import pandas as pd\nfrom pathlib import Path\n\npath = Path(\"/home/ec2-user/SageMaker/\")\ndf = pd.read_csv(path / \"df_raw.csv\")\ndf.dropna(inplace=True)";
+                var nbb_formatted_code = "import pandas as pd\nfrom pathlib import Path\n\npath = Path(\"/home/ec2-user/SageMaker/\")\ndf = pd.read_csv(path / \"df_raw.csv\")\ndf.dropna(inplace=True)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s2">&quot;object&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>gut_codes</th>
+      <th>transcript_text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>6268</td>
+      <td>6268</td>
+    </tr>
+    <tr>
+      <th>unique</th>
+      <td>505</td>
+      <td>2927</td>
+    </tr>
+    <tr>
+      <th>top</th>
+      <td>K12.MA-MA7-RPS-A.03</td>
+      <td>Explore the Relationship Among Fractions, Deci...</td>
+    </tr>
+    <tr>
+      <th>freq</th>
+      <td>82</td>
+      <td>60</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+
+<div id="f387df7d-e72f-4b37-b00f-36ffc4ef946d"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#f387df7d-e72f-4b37-b00f-36ffc4ef946d');
+
+            setTimeout(function() {
+                var nbb_cell_id = 4;
+                var nbb_unformatted_code = "df.describe(include=\"object\")";
+                var nbb_formatted_code = "df.describe(include=\"object\")";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">gutcode_to_code</span> <span class="o">=</span> <span class="p">{</span><span class="n">val</span><span class="p">:</span> <span class="n">idx</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">gut_codes</span><span class="p">))}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="118ac5de-d76f-4ff3-b48e-795c62fd4022"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#118ac5de-d76f-4ff3-b48e-795c62fd4022');
+
+            setTimeout(function() {
+                var nbb_cell_id = 5;
+                var nbb_unformatted_code = "gutcode_to_code = {val: idx for idx, val in enumerate(pd.unique(df.gut_codes))}";
+                var nbb_formatted_code = "gutcode_to_code = {val: idx for idx, val in enumerate(pd.unique(df.gut_codes))}";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;gut_codes&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">gutcode_to_code</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="154e77e6-2ce8-476a-8f9b-2bcc4127d757"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#154e77e6-2ce8-476a-8f9b-2bcc4127d757');
+
+            setTimeout(function() {
+                var nbb_cell_id = 6;
+                var nbb_unformatted_code = "df[\"labels\"] = df[\"gut_codes\"].map(lambda x: gutcode_to_code[x])";
+                var nbb_formatted_code = "df[\"labels\"] = df[\"gut_codes\"].map(lambda x: gutcode_to_code[x])";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="102aeac3-4898-4f43-ac8b-c89082e084c5"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#102aeac3-4898-4f43-ac8b-c89082e084c5');
+
+            setTimeout(function() {
+                var nbb_cell_id = 7;
+                var nbb_unformatted_code = "# df = df.sample(1000)";
+                var nbb_formatted_code = "# df = df.sample(1000)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>gut_codes</th>
+      <th>transcript_text</th>
+      <th>labels</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>K12.MA-MA6-RPS-A.02</td>
+      <td>Ratio Worksheets | Simple Ratio Worksheets Thi...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>K12.MA-A1-A-REI.C.01</td>
+      <td>Systems of Linear Equations: Solving by Additi...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>K12.MA-A1-F-IF.B.01</td>
+      <td>Increasing and Decreasing Functions math, math...</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>K12.MA-A2-F-IF.B.01</td>
+      <td>Increasing and Decreasing Functions math, math...</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>K12.MA-A1-F-LE.A.01.03</td>
+      <td>Increasing and Decreasing Functions math, math...</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>8472</th>
+      <td>8472</td>
+      <td>K12.MA-A1-A-SSE.B.01.03</td>
+      <td>Illustrative Mathematics Providing instruction...</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>8473</th>
+      <td>8473</td>
+      <td>K12.MA-A1-A-REI.B.02.02</td>
+      <td>3 Ways to Solve Quadratic Equations - wikiHow ...</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>8474</th>
+      <td>8474</td>
+      <td>K12.MA-GEO-SP-CP.A.02</td>
+      <td>Illustrative Mathematics Providing instruction...</td>
+      <td>115</td>
+    </tr>
+    <tr>
+      <th>8475</th>
+      <td>8475</td>
+      <td>K12.MA-GEO-SP-CP.A.03</td>
+      <td>Illustrative Mathematics Providing instruction...</td>
+      <td>113</td>
+    </tr>
+    <tr>
+      <th>8476</th>
+      <td>8476</td>
+      <td>K12.MA-MA6-TNS-C.02.02</td>
+      <td>Diplodocus Using Coordinates math, maths, math...</td>
+      <td>287</td>
+    </tr>
+  </tbody>
+</table>
+<p>6268 rows × 4 columns</p>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+
+<div id="6120143f-1f6a-422d-a287-f5a59f7ed72b"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#6120143f-1f6a-422d-a287-f5a59f7ed72b');
+
+            setTimeout(function() {
+                var nbb_cell_id = 8;
+                var nbb_unformatted_code = "df";
+                var nbb_formatted_code = "df";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;TEXT1: &quot;</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">transcript_text</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="f3fcdfe7-83a2-48ef-a679-9e79a106fe50"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#f3fcdfe7-83a2-48ef-a679-9e79a106fe50');
+
+            setTimeout(function() {
+                var nbb_cell_id = 9;
+                var nbb_unformatted_code = "df[\"text\"] = \"TEXT1: \" + df.transcript_text";
+                var nbb_formatted_code = "df[\"text\"] = \"TEXT1: \" + df.transcript_text";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">datasets</span> <span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">DatasetDict</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_pandas</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="08a9d245-a5c2-415c-9c82-b3efb9a0e3c7"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#08a9d245-a5c2-415c-9c82-b3efb9a0e3c7');
+
+            setTimeout(function() {
+                var nbb_cell_id = 10;
+                var nbb_unformatted_code = "from datasets import Dataset, DatasetDict\n\ndataset = Dataset.from_pandas(df)";
+                var nbb_formatted_code = "from datasets import Dataset, DatasetDict\n\ndataset = Dataset.from_pandas(df)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dataset</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Dataset({
+    features: [&#39;Unnamed: 0&#39;, &#39;gut_codes&#39;, &#39;transcript_text&#39;, &#39;labels&#39;, &#39;text&#39;, &#39;__index_level_0__&#39;],
+    num_rows: 6268
+})</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+
+<div id="2d9a0cb7-cb4b-479d-bc25-b75032e25225"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#2d9a0cb7-cb4b-479d-bc25-b75032e25225');
+
+            setTimeout(function() {
+                var nbb_cell_id = 11;
+                var nbb_unformatted_code = "dataset";
+                var nbb_formatted_code = "dataset";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">remove_columns</span><span class="p">([</span><span class="s2">&quot;Unnamed: 0&quot;</span><span class="p">,</span> <span class="s2">&quot;transcript_text&quot;</span><span class="p">,</span> <span class="s2">&quot;__index_level_0__&quot;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="ab4c018d-ae92-4b2d-9538-2aba2dabe739"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#ab4c018d-ae92-4b2d-9538-2aba2dabe739');
+
+            setTimeout(function() {
+                var nbb_cell_id = 12;
+                var nbb_unformatted_code = "dataset = dataset.remove_columns([\"Unnamed: 0\", \"transcript_text\", \"__index_level_0__\"])";
+                var nbb_formatted_code = "dataset = dataset.remove_columns([\"Unnamed: 0\", \"transcript_text\", \"__index_level_0__\"])";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dataset</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Dataset({
+    features: [&#39;gut_codes&#39;, &#39;labels&#39;, &#39;text&#39;],
+    num_rows: 6268
+})</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+
+<div id="b3b532ea-8205-45b5-b1dd-0638eab51670"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#b3b532ea-8205-45b5-b1dd-0638eab51670');
+
+            setTimeout(function() {
+                var nbb_cell_id = 13;
+                var nbb_unformatted_code = "dataset";
+                var nbb_formatted_code = "dataset";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">train_test_split</span><span class="p">(</span><span class="mf">0.10</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="a81cb4a9-6aa3-4c40-810d-7138217e32d4"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#a81cb4a9-6aa3-4c40-810d-7138217e32d4');
+
+            setTimeout(function() {
+                var nbb_cell_id = 14;
+                var nbb_unformatted_code = "dataset = dataset.train_test_split(0.10, seed=42)";
+                var nbb_formatted_code = "dataset = dataset.train_test_split(0.10, seed=42)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dataset</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>DatasetDict({
+    train: Dataset({
+        features: [&#39;gut_codes&#39;, &#39;labels&#39;, &#39;text&#39;],
+        num_rows: 5641
+    })
+    test: Dataset({
+        features: [&#39;gut_codes&#39;, &#39;labels&#39;, &#39;text&#39;],
+        num_rows: 627
+    })
+})</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+
+<div id="6bc8d3b1-2c3d-4ee9-9064-eaa770573e92"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#6bc8d3b1-2c3d-4ee9-9064-eaa770573e92');
+
+            setTimeout(function() {
+                var nbb_cell_id = 15;
+                var nbb_unformatted_code = "dataset";
+                var nbb_formatted_code = "dataset";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">DistilBertTokenizerFast</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">DistilBertTokenizerFast</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;distilbert-base-uncased&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="21b14880-39d1-445b-9efd-1a9a11f3cc9b"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#21b14880-39d1-445b-9efd-1a9a11f3cc9b');
+
+            setTimeout(function() {
+                var nbb_cell_id = 16;
+                var nbb_unformatted_code = "from transformers import DistilBertTokenizerFast\n\ntokenizer = DistilBertTokenizerFast.from_pretrained(\"distilbert-base-uncased\")";
+                var nbb_formatted_code = "from transformers import DistilBertTokenizerFast\n\ntokenizer = DistilBertTokenizerFast.from_pretrained(\"distilbert-base-uncased\")";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_encodings</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">][</span><span class="s2">&quot;text&quot;</span><span class="p">],</span>
+    <span class="n">truncation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">padding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">max_length</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
+    <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">val_encodings</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;test&quot;</span><span class="p">][</span><span class="s2">&quot;text&quot;</span><span class="p">],</span>
+    <span class="n">truncation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">padding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">max_length</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
+    <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="9365ae41-c3d6-4282-9457-7ef64ac3cee2"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#9365ae41-c3d6-4282-9457-7ef64ac3cee2');
+
+            setTimeout(function() {
+                var nbb_cell_id = 17;
+                var nbb_unformatted_code = "train_encodings = tokenizer(\n    dataset[\"train\"][\"text\"],\n    truncation=True,\n    padding=True,\n    max_length=512,\n    return_tensors=\"pt\",\n)\nval_encodings = tokenizer(\n    dataset[\"test\"][\"text\"],\n    truncation=True,\n    padding=True,\n    max_length=512,\n    return_tensors=\"pt\",\n)";
+                var nbb_formatted_code = "train_encodings = tokenizer(\n    dataset[\"train\"][\"text\"],\n    truncation=True,\n    padding=True,\n    max_length=512,\n    return_tensors=\"pt\",\n)\nval_encodings = tokenizer(\n    dataset[\"test\"][\"text\"],\n    truncation=True,\n    padding=True,\n    max_length=512,\n    return_tensors=\"pt\",\n)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+
+
+<span class="k">class</span> <span class="nc">BankingDataset</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">encodings</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encodings</span> <span class="o">=</span> <span class="n">encodings</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">val</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">encodings</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+        <span class="n">item</span><span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">item</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="0ec305cd-65c2-4968-9b73-c5faef69b4dd"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#0ec305cd-65c2-4968-9b73-c5faef69b4dd');
+
+            setTimeout(function() {
+                var nbb_cell_id = 18;
+                var nbb_unformatted_code = "import torch\n\n\nclass BankingDataset(torch.utils.data.Dataset):\n    def __init__(self, encodings, labels):\n        self.encodings = encodings\n        self.labels = labels\n\n    def __getitem__(self, idx):\n        item = {key: torch.tensor(val[idx]) for key, val in self.encodings.items()}\n        item[\"labels\"] = torch.tensor(self.labels[idx])\n        return item\n\n    def __len__(self):\n        return len(self.labels)";
+                var nbb_formatted_code = "import torch\n\n\nclass BankingDataset(torch.utils.data.Dataset):\n    def __init__(self, encodings, labels):\n        self.encodings = encodings\n        self.labels = labels\n\n    def __getitem__(self, idx):\n        item = {key: torch.tensor(val[idx]) for key, val in self.encodings.items()}\n        item[\"labels\"] = torch.tensor(self.labels[idx])\n        return item\n\n    def __len__(self):\n        return len(self.labels)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_dataset</span> <span class="o">=</span> <span class="n">BankingDataset</span><span class="p">(</span><span class="n">train_encodings</span><span class="p">,</span> <span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">][</span><span class="s2">&quot;labels&quot;</span><span class="p">])</span>
+<span class="n">val_dataset</span> <span class="o">=</span> <span class="n">BankingDataset</span><span class="p">(</span><span class="n">val_encodings</span><span class="p">,</span> <span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;test&quot;</span><span class="p">][</span><span class="s2">&quot;labels&quot;</span><span class="p">])</span>
+<span class="c1"># test_dataset = IMDbDataset(test_encodings, test_labels)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="c0c119de-0df9-4c2a-904d-6b22c6ba081b"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#c0c119de-0df9-4c2a-904d-6b22c6ba081b');
+
+            setTimeout(function() {
+                var nbb_cell_id = 19;
+                var nbb_unformatted_code = "train_dataset = BankingDataset(train_encodings, dataset[\"train\"][\"labels\"])\nval_dataset = BankingDataset(val_encodings, dataset[\"test\"][\"labels\"])\n# test_dataset = IMDbDataset(test_encodings, test_labels)";
+                var nbb_formatted_code = "train_dataset = BankingDataset(train_encodings, dataset[\"train\"][\"labels\"])\nval_dataset = BankingDataset(val_encodings, dataset[\"test\"][\"labels\"])\n# test_dataset = IMDbDataset(test_encodings, test_labels)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">TrainingArguments</span><span class="p">,</span> <span class="n">Trainer</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModelForSequenceClassification</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="55571066-6e02-43fe-b28b-27ffcd9a4d41"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#55571066-6e02-43fe-b28b-27ffcd9a4d41');
+
+            setTimeout(function() {
+                var nbb_cell_id = 20;
+                var nbb_unformatted_code = "from transformers import TrainingArguments, Trainer\nfrom transformers import AutoModelForSequenceClassification, AutoTokenizer";
+                var nbb_formatted_code = "from transformers import TrainingArguments, Trainer\nfrom transformers import AutoModelForSequenceClassification, AutoTokenizer";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bs</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">lr</span> <span class="o">=</span> <span class="mf">8e-5</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="9c670971-9b78-4ff7-9f71-ea20b1e0df66"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#9c670971-9b78-4ff7-9f71-ea20b1e0df66');
+
+            setTimeout(function() {
+                var nbb_cell_id = 21;
+                var nbb_unformatted_code = "bs = 16\nepochs = 4\nlr = 8e-5";
+                var nbb_formatted_code = "bs = 16\nepochs = 4\nlr = 8e-5";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">args</span> <span class="o">=</span> <span class="n">TrainingArguments</span><span class="p">(</span>
+    <span class="s2">&quot;outputs&quot;</span><span class="p">,</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="n">lr</span><span class="p">,</span>
+    <span class="n">warmup_ratio</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">lr_scheduler_type</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">,</span>
+    <span class="n">fp16</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">evaluation_strategy</span><span class="o">=</span><span class="s2">&quot;epoch&quot;</span><span class="p">,</span>
+    <span class="n">per_device_train_batch_size</span><span class="o">=</span><span class="n">bs</span><span class="p">,</span>
+    <span class="n">per_device_eval_batch_size</span><span class="o">=</span><span class="n">bs</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">num_train_epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span>
+    <span class="n">weight_decay</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+    <span class="n">report_to</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="d8216347-087e-4ab0-9b67-0d8a2e70cdc8"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#d8216347-087e-4ab0-9b67-0d8a2e70cdc8');
+
+            setTimeout(function() {
+                var nbb_cell_id = 22;
+                var nbb_unformatted_code = "args = TrainingArguments(\n    \"outputs\",\n    learning_rate=lr,\n    warmup_ratio=0.1,\n    lr_scheduler_type=\"cosine\",\n    fp16=True,\n    evaluation_strategy=\"epoch\",\n    per_device_train_batch_size=bs,\n    per_device_eval_batch_size=bs * 2,\n    num_train_epochs=epochs,\n    weight_decay=0.01,\n    report_to=\"none\",\n)";
+                var nbb_formatted_code = "args = TrainingArguments(\n    \"outputs\",\n    learning_rate=lr,\n    warmup_ratio=0.1,\n    lr_scheduler_type=\"cosine\",\n    fp16=True,\n    evaluation_strategy=\"epoch\",\n    per_device_train_batch_size=bs,\n    per_device_eval_batch_size=bs * 2,\n    num_train_epochs=epochs,\n    weight_decay=0.01,\n    report_to=\"none\",\n)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">compute_metrics</span><span class="p">(</span><span class="n">eval_pred</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="kn">from</span> <span class="nn">datasets</span> <span class="kn">import</span> <span class="n">load_metric</span>
+
+    <span class="n">metric1</span> <span class="o">=</span> <span class="n">load_metric</span><span class="p">(</span><span class="s2">&quot;precision&quot;</span><span class="p">)</span>
+    <span class="n">metric2</span> <span class="o">=</span> <span class="n">load_metric</span><span class="p">(</span><span class="s2">&quot;recall&quot;</span><span class="p">)</span>
+    <span class="n">metric3</span> <span class="o">=</span> <span class="n">load_metric</span><span class="p">(</span><span class="s2">&quot;f1&quot;</span><span class="p">)</span>
+    <span class="n">metric4</span> <span class="o">=</span> <span class="n">load_metric</span><span class="p">(</span><span class="s2">&quot;accuracy&quot;</span><span class="p">)</span>
+
+    <span class="n">logits</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">eval_pred</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">precision</span> <span class="o">=</span> <span class="n">metric1</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span>
+        <span class="n">predictions</span><span class="o">=</span><span class="n">predictions</span><span class="p">,</span> <span class="n">references</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;micro&quot;</span>
+    <span class="p">)[</span><span class="s2">&quot;precision&quot;</span><span class="p">]</span>
+    <span class="n">recall</span> <span class="o">=</span> <span class="n">metric2</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span>
+        <span class="n">predictions</span><span class="o">=</span><span class="n">predictions</span><span class="p">,</span> <span class="n">references</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;micro&quot;</span>
+    <span class="p">)[</span><span class="s2">&quot;recall&quot;</span><span class="p">]</span>
+    <span class="n">f1</span> <span class="o">=</span> <span class="n">metric3</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">predictions</span><span class="o">=</span><span class="n">predictions</span><span class="p">,</span> <span class="n">references</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;micro&quot;</span><span class="p">)[</span>
+        <span class="s2">&quot;f1&quot;</span>
+    <span class="p">]</span>
+    <span class="n">accuracy</span> <span class="o">=</span> <span class="n">metric4</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">predictions</span><span class="o">=</span><span class="n">predictions</span><span class="p">,</span> <span class="n">references</span><span class="o">=</span><span class="n">labels</span><span class="p">)[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;precision&quot;</span><span class="p">:</span> <span class="n">precision</span><span class="p">,</span> <span class="s2">&quot;recall&quot;</span><span class="p">:</span> <span class="n">recall</span><span class="p">,</span> <span class="s2">&quot;f1&quot;</span><span class="p">:</span> <span class="n">f1</span><span class="p">,</span> <span class="s2">&quot;accuracy&quot;</span><span class="p">:</span> <span class="n">accuracy</span><span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="083feed2-8968-4b15-a0d8-873c35b8041e"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#083feed2-8968-4b15-a0d8-873c35b8041e');
+
+            setTimeout(function() {
+                var nbb_cell_id = 23;
+                var nbb_unformatted_code = "def compute_metrics(eval_pred):\n    import numpy as np\n    from datasets import load_metric\n\n    metric1 = load_metric(\"precision\")\n    metric2 = load_metric(\"recall\")\n    metric3 = load_metric(\"f1\")\n    metric4 = load_metric(\"accuracy\")\n\n    logits, labels = eval_pred\n    predictions = np.argmax(logits, axis=-1)\n\n    precision = metric1.compute(\n        predictions=predictions, references=labels, average=\"micro\"\n    )[\"precision\"]\n    recall = metric2.compute(\n        predictions=predictions, references=labels, average=\"micro\"\n    )[\"recall\"]\n    f1 = metric3.compute(predictions=predictions, references=labels, average=\"micro\")[\n        \"f1\"\n    ]\n    accuracy = metric4.compute(predictions=predictions, references=labels)[\"accuracy\"]\n\n    return {\"precision\": precision, \"recall\": recall, \"f1\": f1, \"accuracy\": accuracy}";
+                var nbb_formatted_code = "def compute_metrics(eval_pred):\n    import numpy as np\n    from datasets import load_metric\n\n    metric1 = load_metric(\"precision\")\n    metric2 = load_metric(\"recall\")\n    metric3 = load_metric(\"f1\")\n    metric4 = load_metric(\"accuracy\")\n\n    logits, labels = eval_pred\n    predictions = np.argmax(logits, axis=-1)\n\n    precision = metric1.compute(\n        predictions=predictions, references=labels, average=\"micro\"\n    )[\"precision\"]\n    recall = metric2.compute(\n        predictions=predictions, references=labels, average=\"micro\"\n    )[\"recall\"]\n    f1 = metric3.compute(predictions=predictions, references=labels, average=\"micro\")[\n        \"f1\"\n    ]\n    accuracy = metric4.compute(predictions=predictions, references=labels)[\"accuracy\"]\n\n    return {\"precision\": precision, \"recall\": recall, \"f1\": f1, \"accuracy\": accuracy}";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForSequenceClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+    <span class="s2">&quot;distilbert-base-uncased&quot;</span><span class="p">,</span> <span class="n">num_labels</span><span class="o">=</span><span class="mi">505</span>
+<span class="p">)</span>
+<span class="n">trainer</span> <span class="o">=</span> <span class="n">Trainer</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="n">args</span><span class="p">,</span>
+    <span class="n">train_dataset</span><span class="o">=</span><span class="n">train_dataset</span><span class="p">,</span>
+    <span class="n">eval_dataset</span><span class="o">=</span><span class="n">val_dataset</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">compute_metrics</span><span class="o">=</span><span class="n">compute_metrics</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># model = AutoModelForSequenceClassification.from_pretrained(</span>
+<span class="c1">#     &quot;distilbert-base-uncased&quot;, num_labels=505</span>
+<span class="c1"># )</span>
+<span class="c1"># trainer = Trainer(</span>
+<span class="c1">#     model,</span>
+<span class="c1">#     args,</span>
+<span class="c1">#     train_dataset=train_dataset,</span>
+<span class="c1">#     eval_dataset=val_dataset,</span>
+<span class="c1">#     tokenizer=tokenizer,</span>
+<span class="c1"># )</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>Some weights of the model checkpoint at distilbert-base-uncased were not used when initializing DistilBertForSequenceClassification: [&#39;vocab_layer_norm.weight&#39;, &#39;vocab_transform.bias&#39;, &#39;vocab_layer_norm.bias&#39;, &#39;vocab_transform.weight&#39;, &#39;vocab_projector.bias&#39;, &#39;vocab_projector.weight&#39;]
+- This IS expected if you are initializing DistilBertForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing DistilBertForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of DistilBertForSequenceClassification were not initialized from the model checkpoint at distilbert-base-uncased and are newly initialized: [&#39;pre_classifier.bias&#39;, &#39;pre_classifier.weight&#39;, &#39;classifier.weight&#39;, &#39;classifier.bias&#39;]
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Using cuda_amp half precision backend
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+
+<div id="3d834832-7305-43e2-8915-5e2b573894e8"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#3d834832-7305-43e2-8915-5e2b573894e8');
+
+            setTimeout(function() {
+                var nbb_cell_id = 24;
+                var nbb_unformatted_code = "model = AutoModelForSequenceClassification.from_pretrained(\n    \"distilbert-base-uncased\", num_labels=505\n)\ntrainer = Trainer(\n    model,\n    args,\n    train_dataset=train_dataset,\n    eval_dataset=val_dataset,\n    tokenizer=tokenizer,\n    compute_metrics=compute_metrics,\n)\n\n# model = AutoModelForSequenceClassification.from_pretrained(\n#     \"distilbert-base-uncased\", num_labels=505\n# )\n# trainer = Trainer(\n#     model,\n#     args,\n#     train_dataset=train_dataset,\n#     eval_dataset=val_dataset,\n#     tokenizer=tokenizer,\n# )";
+                var nbb_formatted_code = "model = AutoModelForSequenceClassification.from_pretrained(\n    \"distilbert-base-uncased\", num_labels=505\n)\ntrainer = Trainer(\n    model,\n    args,\n    train_dataset=train_dataset,\n    eval_dataset=val_dataset,\n    tokenizer=tokenizer,\n    compute_metrics=compute_metrics,\n)\n\n# model = AutoModelForSequenceClassification.from_pretrained(\n#     \"distilbert-base-uncased\", num_labels=505\n# )\n# trainer = Trainer(\n#     model,\n#     args,\n#     train_dataset=train_dataset,\n#     eval_dataset=val_dataset,\n#     tokenizer=tokenizer,\n# )";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">trainer</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/home/ec2-user/anaconda3/envs/pytorch_p38/lib/python3.8/site-packages/transformers/optimization.py:306: FutureWarning: This implementation of AdamW is deprecated and will be removed in a future version. Use the PyTorch implementation torch.optim.AdamW instead, or set `no_deprecation_warning=True` to disable this warning
+  warnings.warn(
+***** Running training *****
+  Num examples = 5641
+  Num Epochs = 4
+  Instantaneous batch size per device = 16
+  Total train batch size (w. parallel, distributed &amp; accumulation) = 16
+  Gradient Accumulation steps = 1
+  Total optimization steps = 1412
+/tmp/ipykernel_27360/166799662.py:10: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  item = {key: torch.tensor(val[idx]) for key, val in self.encodings.items()}
+You&#39;re using a DistilBertTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+    <div>
+      
+      <progress value="1412" max="1412" style="width:300px; height:20px; vertical-align: middle;"></progress>
+      [1412/1412 07:19, Epoch 4/4]
+    </div>
+    <table border="1" class="dataframe">
+  <thead>
+ <tr style="text-align: left;">
+      <th>Epoch</th>
+      <th>Training Loss</th>
+      <th>Validation Loss</th>
+      <th>Precision</th>
+      <th>Recall</th>
+      <th>F1</th>
+      <th>Accuracy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>No log</td>
+      <td>5.445369</td>
+      <td>0.039872</td>
+      <td>0.039872</td>
+      <td>0.039872</td>
+      <td>0.039872</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>5.716600</td>
+      <td>4.626223</td>
+      <td>0.074960</td>
+      <td>0.074960</td>
+      <td>0.074960</td>
+      <td>0.074960</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>4.386700</td>
+      <td>4.218055</td>
+      <td>0.105263</td>
+      <td>0.105263</td>
+      <td>0.105263</td>
+      <td>0.105263</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>4.386700</td>
+      <td>4.148781</td>
+      <td>0.116427</td>
+      <td>0.116427</td>
+      <td>0.116427</td>
+      <td>0.116427</td>
+    </tr>
+  </tbody>
+</table><p>
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>***** Running Evaluation *****
+  Num examples = 627
+  Batch size = 32
+/tmp/ipykernel_27360/235686084.py:5: FutureWarning: load_metric is deprecated and will be removed in the next major version of datasets. Use &#39;evaluate.load&#39; instead, from the new library 🤗 Evaluate: https://huggingface.co/docs/evaluate
+  metric1 = load_metric(&#34;precision&#34;)
+/tmp/ipykernel_27360/166799662.py:10: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  item = {key: torch.tensor(val[idx]) for key, val in self.encodings.items()}
+Saving model checkpoint to outputs/checkpoint-500
+Configuration saved in outputs/checkpoint-500/config.json
+Model weights saved in outputs/checkpoint-500/pytorch_model.bin
+tokenizer config file saved in outputs/checkpoint-500/tokenizer_config.json
+Special tokens file saved in outputs/checkpoint-500/special_tokens_map.json
+/tmp/ipykernel_27360/166799662.py:10: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  item = {key: torch.tensor(val[idx]) for key, val in self.encodings.items()}
+***** Running Evaluation *****
+  Num examples = 627
+  Batch size = 32
+/tmp/ipykernel_27360/166799662.py:10: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  item = {key: torch.tensor(val[idx]) for key, val in self.encodings.items()}
+Saving model checkpoint to outputs/checkpoint-1000
+Configuration saved in outputs/checkpoint-1000/config.json
+Model weights saved in outputs/checkpoint-1000/pytorch_model.bin
+tokenizer config file saved in outputs/checkpoint-1000/tokenizer_config.json
+Special tokens file saved in outputs/checkpoint-1000/special_tokens_map.json
+/tmp/ipykernel_27360/166799662.py:10: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  item = {key: torch.tensor(val[idx]) for key, val in self.encodings.items()}
+***** Running Evaluation *****
+  Num examples = 627
+  Batch size = 32
+/tmp/ipykernel_27360/166799662.py:10: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  item = {key: torch.tensor(val[idx]) for key, val in self.encodings.items()}
+***** Running Evaluation *****
+  Num examples = 627
+  Batch size = 32
+
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>TrainOutput(global_step=1412, training_loss=4.686880657422981, metrics={&#39;train_runtime&#39;: 440.6226, &#39;train_samples_per_second&#39;: 51.209, &#39;train_steps_per_second&#39;: 3.205, &#39;total_flos&#39;: 3015806532464640.0, &#39;train_loss&#39;: 4.686880657422981, &#39;epoch&#39;: 4.0})</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+
+<div id="4eab18ce-a7fe-4d55-8c77-e5f03cd2dacc"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#4eab18ce-a7fe-4d55-8c77-e5f03cd2dacc');
+
+            setTimeout(function() {
+                var nbb_cell_id = 25;
+                var nbb_unformatted_code = "trainer.train()";
+                var nbb_formatted_code = "trainer.train()";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">preds</span> <span class="o">=</span> <span class="n">trainer</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">val_dataset</span><span class="p">)</span><span class="o">.</span><span class="n">predictions</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">actual</span> <span class="o">=</span> <span class="p">(</span><span class="n">val_dataset</span><span class="p">)</span><span class="o">.</span><span class="n">labels</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">predictions</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>***** Running Prediction *****
+  Num examples = 627
+  Batch size = 32
+/tmp/ipykernel_27360/166799662.py:10: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  item = {key: torch.tensor(val[idx]) for key, val in self.encodings.items()}
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+
+<div id="a56d5d6e-6a4c-4d8f-85b6-5b70e456952f"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#a56d5d6e-6a4c-4d8f-85b6-5b70e456952f');
+
+            setTimeout(function() {
+                var nbb_cell_id = 30;
+                var nbb_unformatted_code = "import numpy as np\n\npreds = trainer.predict(val_dataset).predictions.astype(float)\npredictions = np.argmax(preds, axis=-1)\nactual = (val_dataset).labels\ny_pred = predictions";
+                var nbb_formatted_code = "import numpy as np\n\npreds = trainer.predict(val_dataset).predictions.astype(float)\npredictions = np.argmax(preds, axis=-1)\nactual = (val_dataset).labels\ny_pred = predictions";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">check_top_5</span><span class="p">(</span><span class="n">idx</span><span class="p">):</span>
+    <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">actual</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="ow">in</span> <span class="n">preds</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[</span><span class="o">-</span><span class="mi">5</span><span class="p">:][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">else</span> <span class="kc">False</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="7a5ad68f-3a97-491e-a1ba-aa0869fa6a8a"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#7a5ad68f-3a97-491e-a1ba-aa0869fa6a8a');
+
+            setTimeout(function() {
+                var nbb_cell_id = 31;
+                var nbb_unformatted_code = "def check_top_5(idx):\n    return True if actual[idx] in preds[idx].argsort()[-5:][::-1] else False";
+                var nbb_formatted_code = "def check_top_5(idx):\n    return True if actual[idx] in preds[idx].argsort()[-5:][::-1] else False";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">true_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">false_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)):</span>
+
+    <span class="k">if</span> <span class="n">check_top_5</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+        <span class="n">true_count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">false_count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">true_count</span><span class="p">,</span> <span class="n">false_count</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>230 397
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+
+<div id="77fc87b8-2fb9-41c6-a09f-854fede58283"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#77fc87b8-2fb9-41c6-a09f-854fede58283');
+
+            setTimeout(function() {
+                var nbb_cell_id = 32;
+                var nbb_unformatted_code = "true_count = 0\nfalse_count = 0\n\nfor i in range(0, len(y_pred)):\n\n    if check_top_5(i):\n        true_count += 1\n    else:\n        false_count += 1\n\nprint(true_count, false_count)";
+                var nbb_formatted_code = "true_count = 0\nfalse_count = 0\n\nfor i in range(0, len(y_pred)):\n\n    if check_top_5(i):\n        true_count += 1\n    else:\n        false_count += 1\n\nprint(true_count, false_count)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">230</span> <span class="o">/</span> <span class="p">(</span><span class="mi">230</span> <span class="o">+</span> <span class="mi">397</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>36.68261562998405</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+
+<div id="0ca3f010-6052-4ec3-be90-923abc228e1e"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#0ca3f010-6052-4ec3-be90-923abc228e1e');
+
+            setTimeout(function() {
+                var nbb_cell_id = 34;
+                var nbb_unformatted_code = "230 / (230 + 397) *100";
+                var nbb_formatted_code = "230 / (230 + 397) * 100";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">check_top_10</span><span class="p">(</span><span class="n">idx</span><span class="p">):</span>
+    <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">actual</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="ow">in</span> <span class="n">preds</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[</span><span class="o">-</span><span class="mi">10</span><span class="p">:][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">else</span> <span class="kc">False</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="b1da0d53-63f2-420a-ba0f-9ddf37f01a3b"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#b1da0d53-63f2-420a-ba0f-9ddf37f01a3b');
+
+            setTimeout(function() {
+                var nbb_cell_id = 35;
+                var nbb_unformatted_code = "def check_top_10(idx):\n    return True if actual[idx] in preds[idx].argsort()[-10:][::-1] else False";
+                var nbb_formatted_code = "def check_top_10(idx):\n    return True if actual[idx] in preds[idx].argsort()[-10:][::-1] else False";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">true_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">false_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)):</span>
+
+    <span class="k">if</span> <span class="n">check_top_10</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+        <span class="n">true_count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">false_count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">true_count</span><span class="p">,</span> <span class="n">false_count</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>319 308
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+
+<div id="ba35c212-a663-47b2-9e0c-40bf96253a91"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#ba35c212-a663-47b2-9e0c-40bf96253a91');
+
+            setTimeout(function() {
+                var nbb_cell_id = 36;
+                var nbb_unformatted_code = "true_count = 0\nfalse_count = 0\n\nfor i in range(0, len(y_pred)):\n\n    if check_top_10(i):\n        true_count += 1\n    else:\n        false_count += 1\n\nprint(true_count, false_count)";
+                var nbb_formatted_code = "true_count = 0\nfalse_count = 0\n\nfor i in range(0, len(y_pred)):\n\n    if check_top_10(i):\n        true_count += 1\n    else:\n        false_count += 1\n\nprint(true_count, false_count)";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">319</span> <span class="o">/</span> <span class="p">(</span><span class="mi">319</span> <span class="o">+</span> <span class="mi">308</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>50.877192982456144</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+
+<div id="9db06caa-2811-41e9-93c4-3bf20081e87d"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#9db06caa-2811-41e9-93c4-3bf20081e87d');
+
+            setTimeout(function() {
+                var nbb_cell_id = 38;
+                var nbb_unformatted_code = "319 / (319 + 308) *100";
+                var nbb_formatted_code = "319 / (319 + 308) * 100";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        if (nbb_cells[i].get_text() == nbb_unformatted_code) {
+                             nbb_cells[i].set_text(nbb_formatted_code);
+                        }
+                        break;
+                    }
+                }
+            }, 500);
+            
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+&lt;/div&gt;
+ 
+
+</p></div></div></div></div></div></div>
+
+
+  </div><a class="u-url" href="/sample-ds-blog/2022/10/03/kw_HugingFace-nucleus.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/sample-ds-blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/sample-ds-blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/sample-ds-blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" target="_blank" title="fastai"><svg class="svg-icon grey"><use xlink:href="/sample-ds-blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" target="_blank" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/sample-ds-blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
